@@ -1,52 +1,75 @@
-# API para criação de produtos
+📦 ProdutoAPI
+API RESTful de exemplo desenvolvida em ASP.NET Core, com foco em boas práticas de arquitetura e extensibilidade. A API permite criação e listagem de produtos, utilizando Entity Framework Core, eventos com EventArgs, e uma estrutura em camadas.
 
-Projeto exemplo de API RESTful em ASP.NET Core, utilizando:
+🚀 Funcionalidades
+✅ Criar e listar produtos.
 
-- Entity Framework Core  para acesso ao banco de dados
-- Eventos com `EventArgs` para notificação de ações (ex: pedido aprovado)
-- Arquitetura em camadas: Domain, Application, Infra, UI
-- Boas práticas de desenvolvimento: injeção de dependência, separação de responsabilidades, async/await
+🔔 Disparo de evento ao cadastrar um produto (EventArgs), permitindo integração com ações adicionais (ex: envio de e-mail).
 
----
+💾 Persistência de dados com SQL Server (adaptável para outros bancos).
 
-## Funcionalidades
+🧪 Estrutura preparada para testes e manutenção.
 
-- Criar, listar produtos
-- Evento disparado quando um produto é incluido, com tratamento via `EventArgs`
-- Persistência de dados usando SQL Server (pode ser adaptado para outros bancos)
-- Estrutura preparada para facilitar testes e manutenção
+🏗️ Arquitetura
+Domain: entidades e contratos.
 
----
+Application: interfaces e serviços de aplicação.
 
-## Tecnologias
+Infra: implementação de acesso a dados com Entity Framework Core.
 
-- .NET 8 (ASP.NET Core Web API)
-- Entity Framework Core
-- SQL Server
-- C# 10/11
-- 
+UI: camada de apresentação com ASP.NET Core Web API.
 
-### Pré-requisitos
+🛠️ Tecnologias Utilizadas
+.NET 8 (ASP.NET Core Web API)
 
-- .NET 8 SDK ou superior instalado
-- SQL Server rodando localmente ou acesso a um servidor SQL
+Entity Framework Core
 
-1. Clone o repositório:
+SQL Server
 
-   ```bash
-   git clone https://github.com/AlexxSilva/ProdutoAPI.git
-   cd ProdutoAPI
-   
-2. Configure a connection string no arquivo appsettings.json:
-   
-   "ConnectionStrings": {
+C# 10/11
+
+Injeção de dependência
+
+async/await
+
+EventArgs para eventos customizados
+
+📋 Pré-requisitos
+.NET 8 SDK ou superior instalado
+
+Instância do SQL Server rodando localmente ou remotamente
+
+🧪 Como rodar o projeto
+bash
+Copiar
+Editar
+git clone https://github.com/AlexxSilva/ProdutoAPI.git
+cd ProdutoAPI
+📄 Configure a string de conexão no appsettings.json:
+json
+Copiar
+Editar
+"ConnectionStrings": {
   "ConexaoPadrao": "Server=localhost;Database=Produtos;Trusted_Connection=True;"
 }
-
-Endpoints disponíveis
+🔄 Execute as migrações (se necessário):
+bash
+Copiar
+Editar
+dotnet ef database update
+▶️ Rode a aplicação:
+bash
+Copiar
+Editar
+dotnet run
+📡 Endpoints disponíveis
 Método	URL	Descrição
 GET	/api/produtos	Lista todos os produtos
 POST	/api/produtos	Cria um novo produto
 
-Eventos
-Quando um produto é incluido, um evento é disparado e pode ser tratado para executar ações adicionais, como envio de e-mail (Em produção).
+🔔 Eventos
+Sempre que um produto é incluído, um evento personalizado é disparado usando EventArgs, permitindo acoplamento leve para notificações ou integrações, como:
+
+Envio de e-mails
+
+
