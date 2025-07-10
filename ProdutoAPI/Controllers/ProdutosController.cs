@@ -9,16 +9,22 @@ namespace ProdutoAPI.Controllers
     [Route("api/[controller]")]
     public class ProdutosController : Controller
     {
-        private readonly ProdutoService _service;
+        private readonly IProdutoService _service;
+        private readonly IEmailService _emailService;
 
-        public ProdutosController(ProdutoService service)
+        public ProdutosController(IProdutoService service, IEmailService emailService)
         {
             _service = service;
+            _emailService = emailService;
 
             _service.ProdutoCriado += (sender, args) =>
              {
-                 Console.WriteLine($"Produto criado: {args.produto.Nome}");
+                 _emailService.Enviar(para: "destinatario.com.br",
+                     assunto: "Novo Produto Criado",
+                     corpo: $"Produto Criado:{args.produto.Nome}");
+
              };
+        
         }
 
         [HttpGet]

@@ -6,11 +6,12 @@ using System;
 
 namespace ProdutoAPI.Application
 {
-    public class ProdutoService
+    public class ProdutoService : IProdutoService
     {
-        
+
+        public event EventHandler<ProdutoCriadoEventArgs> ProdutoCriado;
         private readonly IProdutoRepository _produtoRepository;
-        public event EventHandler<ProdutoCriadoEventArgs> ProdutoCriado;    
+      
         public ProdutoService(IProdutoRepository produtoRepository)
         {
             _produtoRepository = produtoRepository;   
