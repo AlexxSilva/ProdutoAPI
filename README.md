@@ -1,4 +1,6 @@
 📦 ProdutoAPI
+
+
 API RESTful de exemplo desenvolvida em ASP.NET Core, com foco em boas práticas de arquitetura e extensibilidade. A API permite criação e listagem de produtos, utilizando Entity Framework Core, eventos com EventArgs, e uma estrutura em camadas.
 
 🚀 Funcionalidades
